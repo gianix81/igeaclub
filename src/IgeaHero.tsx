@@ -257,13 +257,13 @@ export default function IgeaHero({
     switch (role) {
       case 'center':
         return {
-          transform: `translateX(-50%) scale(${isMobile ? 0.7 : 0.84})`,
+          transform: `translateX(-50%) scale(${isMobile ? 1 : 0.84})`,
           filter: 'none',
           opacity: 1,
           zIndex: 20,
           left: '50%',
-          height: isMobile ? '60%' : '92%',
-          bottom: isMobile ? '22%' : '9%',
+          height: isMobile ? '68%' : '92%',
+          bottom: isMobile ? '14%' : '9%',
         };
       case 'left':
         return {
