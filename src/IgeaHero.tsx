@@ -257,7 +257,7 @@ export default function IgeaHero({
     switch (role) {
       case 'center':
         return {
-          transform: `translateX(-50%) scale(${isMobile ? 0.7 : 0.94})`,
+          transform: `translateX(-50%) scale(${isMobile ? 0.7 : 0.84})`,
           filter: 'none',
           opacity: 1,
           zIndex: 20,
@@ -339,7 +339,7 @@ export default function IgeaHero({
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
     >
-      <div className="relative w-full" style={{ height: '100vh', overflow: 'hidden' }}>
+      <div className="relative w-full hero-viewport" style={{ overflow: 'hidden' }}>
         {/* Grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -365,7 +365,7 @@ export default function IgeaHero({
                 fontFamily: "'Anton', sans-serif",
                 // dimensione adattata alla lunghezza del titolo, così i nomi
                 // lunghi (es. GINNASTICA ARTISTICA) restano dentro lo schermo
-                fontSize: `clamp(48px, ${Math.min(28, 190 / figure.discipline.length).toFixed(1)}vw, 380px)`,
+                fontSize: `min(clamp(48px, ${Math.min(28, 190 / figure.discipline.length).toFixed(1)}vw, 380px), 34vh)`,
                 fontWeight: 900,
                 color: '#ffffff',
                 opacity: index === activeIndex ? 1 : 0,

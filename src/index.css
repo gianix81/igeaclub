@@ -5,3 +5,9 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* altezza reale del viewport: 100dvh segue la barra del browser su mobile */
+.hero-viewport {
+  height: 100vh;
+  height: 100dvh;
+}
