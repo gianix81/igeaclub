@@ -307,6 +307,22 @@ export default function Corsi({
         <p className="mt-10 text-xs uppercase" style={{ color: 'rgba(255,255,255,0.4)', letterSpacing: '0.18em' }}>
           Igea Club · Enjoy your wellness · Napoli, dal 1978
         </p>
+
+        {/* Trasparenza aiuti di Stato (art. 52 L. 234/2012) */}
+        <p className="mt-4 text-xs" style={{ color: 'rgba(255,255,255,0.45)', lineHeight: 1.6 }}>
+          LA SOCIETA&apos; HA RICEVUTO BENEFICI RIENTRANTI NEL REGIME DEGLI AIUTI DI
+          STATO E NEL REGIME DEI MINIMIS PER I QUALI SUSSISTE L&apos;OBBLIGO DI
+          PUBBLICAZIONE NEL{' '}
+          <a
+            href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: 'rgba(255,255,255,0.75)', textDecoration: 'underline' }}
+          >
+            REGISTRO NAZIONALE DEGLI AIUTI DI STATO
+          </a>{' '}
+          DI CUI ALL&apos;ARTICOLO 52 LEGGE 234/2012.
+        </p>
       </div>
     </div>
   );
