@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X, MapPin, Star, Phone, Mail, Clock } from 'lucide-react';
+import { MapPin, Star, Phone, Mail, Clock } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, WhatsAppGlyph } from './Corsi';
 
 const WHATSAPP_NUMBER = '393200378643';
@@ -92,22 +92,29 @@ export default function Contatti({
           zIndex: 10,
         }}
       >
-        <img
-          src="/igea-logo.png"
-          alt="Igea Club"
-          className="w-24 sm:w-28 select-none"
-          style={{ filter: 'brightness(0) invert(1)' }}
-          draggable={false}
-        />
         <button
           type="button"
-          aria-label="Chiudi"
+          aria-label="Torna alla home"
           onClick={onClose}
-          className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer"
+          className="cursor-pointer"
+          style={{ background: 'none', border: 'none', padding: 0 }}
+        >
+          <img
+            src="/igea-logo.png"
+            alt="Igea Club — torna alla home"
+            className="w-24 sm:w-28 select-none"
+            style={{ filter: 'brightness(0) invert(1)' }}
+            draggable={false}
+          />
+        </button>
+        <a
+          href="tel:+390817333174"
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold"
           style={{
-            border: '1px solid rgba(255,255,255,0.3)',
-            color: '#fff',
-            backgroundColor: 'transparent',
+            border: '1px solid rgba(255,255,255,0.45)',
+            color: '#ffffff',
+            textDecoration: 'none',
+            letterSpacing: '0.08em',
             transition: 'background-color 200ms, color 200ms',
           }}
           onMouseEnter={(e) => {
@@ -119,8 +126,8 @@ export default function Contatti({
             e.currentTarget.style.color = '#ffffff';
           }}
         >
-          <X size={20} strokeWidth={1.75} />
-        </button>
+          081 733 3174
+        </a>
       </div>
 
       <div className="px-5 sm:px-12 pb-20 max-w-6xl mx-auto">

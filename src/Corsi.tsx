@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X, MapPin, Star, Phone, Mail } from 'lucide-react';
+import { MapPin, Star, Phone, Mail } from 'lucide-react';
 import { FIGURES } from './IgeaHero';
 
 const WHATSAPP_NUMBER = '393200378643';
@@ -155,9 +155,11 @@ function CourseCard({
 export default function Corsi({
   open,
   onClose,
+  onContacts,
 }: {
   open: boolean;
   onClose: () => void;
+  onContacts?: () => void;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -193,35 +195,66 @@ export default function Corsi({
           zIndex: 10,
         }}
       >
-        <img
-          src="/igea-logo.png"
-          alt="Igea Club"
-          className="w-24 sm:w-28 select-none"
-          style={{ filter: 'brightness(0) invert(1)' }}
-          draggable={false}
-        />
         <button
           type="button"
-          aria-label="Chiudi"
+          aria-label="Torna alla home"
           onClick={onClose}
-          className="w-11 h-11 rounded-full flex items-center justify-center cursor-pointer"
-          style={{
-            border: '1px solid rgba(255,255,255,0.3)',
-            color: '#fff',
-            backgroundColor: 'transparent',
-            transition: 'background-color 200ms, color 200ms',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.backgroundColor = '#ffffff';
-            e.currentTarget.style.color = '#0B0D10';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.backgroundColor = 'transparent';
-            e.currentTarget.style.color = '#ffffff';
-          }}
+          className="cursor-pointer"
+          style={{ background: 'none', border: 'none', padding: 0 }}
         >
-          <X size={20} strokeWidth={1.75} />
+          <img
+            src="/igea-logo.png"
+            alt="Igea Club — torna alla home"
+            className="w-24 sm:w-28 select-none"
+            style={{ filter: 'brightness(0) invert(1)' }}
+            draggable={false}
+          />
         </button>
+        <div className="flex items-center gap-2.5">
+          <a
+            href="tel:+390817333174"
+            className="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold"
+            style={{
+              border: '1px solid rgba(255,255,255,0.45)',
+              color: '#ffffff',
+              textDecoration: 'none',
+              letterSpacing: '0.08em',
+              transition: 'background-color 200ms, color 200ms',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = '#ffffff';
+              e.currentTarget.style.color = '#0B0D10';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#ffffff';
+            }}
+          >
+            081 733 3174
+          </a>
+          <button
+            type="button"
+            onClick={() => onContacts?.()}
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer"
+            style={{
+              backgroundColor: '#ffffff',
+              border: '1px solid #ffffff',
+              color: '#0B0D10',
+              letterSpacing: '0.16em',
+              transition: 'background-color 200ms, color 200ms',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.color = '#ffffff';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = '#ffffff';
+              e.currentTarget.style.color = '#0B0D10';
+            }}
+          >
+            Contatti<span className="hidden sm:inline">&nbsp;&amp; Dove siamo</span>
+          </button>
+        </div>
       </div>
 
       <div className="px-5 sm:px-12 pb-20 max-w-6xl mx-auto">

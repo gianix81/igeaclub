@@ -14,7 +14,11 @@ export default function App() {
         onDiscover={() => setShowCorsi(true)}
         onContacts={() => setShowContatti(true)}
       />
-      <Corsi open={showCorsi} onClose={() => setShowCorsi(false)} />
+      <Corsi
+        open={showCorsi}
+        onClose={() => setShowCorsi(false)}
+        onContacts={() => setShowContatti(true)}
+      />
       <Contatti open={showContatti} onClose={() => setShowContatti(false)} />
     </>
   );
