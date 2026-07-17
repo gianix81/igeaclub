@@ -5,8 +5,6 @@ import { FacebookIcon, InstagramIcon, WhatsAppGlyph } from './Corsi';
 const WHATSAPP_NUMBER = '393200378643';
 const MAPS_URL =
   'https://www.google.com/maps/place/Igea+Club/@40.8527988,14.3508411,19z/data=!4m14!1m7!3m6!1s0x133ba622ea0f5471:0xde95141c824f7bb!2sIgea+Club!8m2!3d40.8501835!4d14.3534236!16s%2Fg%2F1hc77cq2t!3m5!1s0x133ba622ea0f5471:0xde95141c824f7bb!8m2!3d40.8501835!4d14.3534236!16s%2Fg%2F1hc77cq2t?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D';
-const MAPS_EMBED =
-  'https://maps.google.com/maps?q=Igea%20Club%2C%20Viale%20delle%20Rose%203%2C%20Cercola&t=&z=15&ie=UTF8&iwloc=&output=embed';
 
 const ANTON = { fontFamily: "'Anton', sans-serif" } as const;
 const HAIRLINE = '1px solid rgba(255,255,255,0.08)';
@@ -212,18 +210,37 @@ export default function Contatti({
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-            <div className="lg:col-span-3">
-              <iframe
-                title="Mappa Igea Club — Viale delle Rose 3, Cercola (NA)"
-                src={MAPS_EMBED}
-                width="100%"
-                height="380"
-                style={{ border: 0, borderRadius: 14, display: 'block' }}
+            <a
+              href={MAPS_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="lg:col-span-3 relative block overflow-hidden group"
+              style={{ borderRadius: 14, border: HAIRLINE }}
+              aria-label="Apri la mappa di Igea Club su Google Maps"
+            >
+              <img
+                src="/mappa-igea.jpg"
+                alt="Mappa — Igea Club, Viale delle Rose 3, Cercola (NA)"
                 loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full object-cover"
+                style={{ height: 380, display: 'block', transition: 'transform 400ms' }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
               />
-            </div>
+              <span
+                className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase"
+                style={{ backgroundColor: '#0B0D10', color: '#fff', letterSpacing: '0.14em' }}
+              >
+                <MapPin size={15} strokeWidth={1.75} />
+                Apri in Google Maps
+              </span>
+              <span
+                className="absolute bottom-1.5 right-2"
+                style={{ color: 'rgba(0,0,0,0.55)', fontSize: 10 }}
+              >
+                © OpenStreetMap contributors
+              </span>
+            </a>
             <div className="lg:col-span-2 flex flex-col gap-4">
               <div className="p-6 grow" style={{ backgroundColor: '#101318', border: HAIRLINE, borderRadius: 14 }}>
                 <p className="uppercase mb-3" style={{ color: FAINT, fontSize: 10, letterSpacing: '0.28em' }}>
