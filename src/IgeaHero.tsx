@@ -160,8 +160,6 @@ const DURATION = 650;
 const GRAIN_SVG = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#n)" opacity="0.08"/></svg>`;
 const GRAIN_URI = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`;
 
-type Role = 'center' | 'left' | 'right' | 'back' | 'hidden';
-
 export default function IgeaHero({
   frozen = false,
   onDiscover,
@@ -245,69 +243,46 @@ export default function IgeaHero({
     [navigate],
   );
 
-  const roleOf = (index: number): Role => {
-    if (index === activeIndex) return 'center';
-    if (index === (activeIndex + N - 1) % N) return 'left';
-    if (index === (activeIndex + 1) % N) return 'right';
-    if (index === (activeIndex + 2) % N) return 'back';
-    return 'hidden';
-  };
+  // Anello completo: tutte le N figure sono visibili, distribuite sullo
+  // schermo come un carosello 3D. Lo "slot" 0 è la figura in evidenza; gli
+  // altri slot girano intorno (sin = posizione orizzontale, cos = profondità).
+  const slotStyle = (index: number): React.CSSProperties => {
+    const slot = (index - activeIndex + N) % N;
 
-  const roleStyle = (role: Role): React.CSSProperties => {
-    switch (role) {
-      case 'center':
-        return {
-          transform: `translateX(-50%) scale(${isMobile ? 1 : 0.84})`,
-          filter: 'none',
-          opacity: 1,
-          zIndex: 20,
-          left: '50%',
-          height: isMobile ? '68%' : '92%',
-          bottom: isMobile ? '14%' : '9%',
-        };
-      case 'left':
-        return {
-          transform: 'translateX(-50%) scale(1)',
-          filter: 'blur(2px)',
-          opacity: 0.85,
-          zIndex: 10,
-          left: isMobile ? '20%' : '30%',
-          height: isMobile ? '16%' : '28%',
-          bottom: isMobile ? '32%' : '12%',
-        };
-      case 'right':
-        return {
-          transform: 'translateX(-50%) scale(1)',
-          filter: 'blur(2px)',
-          opacity: 0.85,
-          zIndex: 10,
-          left: isMobile ? '80%' : '70%',
-          height: isMobile ? '16%' : '28%',
-          bottom: isMobile ? '32%' : '12%',
-        };
-      case 'back':
-        return {
-          transform: 'translateX(-50%) scale(1)',
-          filter: 'blur(4px)',
-          opacity: 1,
-          zIndex: 5,
-          left: '50%',
-          height: isMobile ? '13%' : '22%',
-          bottom: isMobile ? '32%' : '12%',
-        };
-      // tutte le altre figure restano invisibili dietro, pronte a entrare
-      case 'hidden':
-        return {
-          transform: 'translateX(-50%) scale(1)',
-          filter: 'blur(4px)',
-          opacity: 0,
-          zIndex: 1,
-          left: '50%',
-          height: isMobile ? '13%' : '22%',
-          bottom: isMobile ? '32%' : '12%',
-          pointerEvents: 'none',
-        };
+    if (slot === 0) {
+      return {
+        transform: `translateX(-50%) scale(${isMobile ? 1 : 0.84})`,
+        filter: 'none',
+        opacity: 1,
+        zIndex: 30,
+        left: '50%',
+        height: isMobile ? '68%' : '92%',
+        bottom: isMobile ? '14%' : '9%',
+      };
     }
+
+    const theta = (slot / N) * Math.PI * 2;
+    const depth = (Math.cos(theta) + 1) / 2; // 1 = vicino al fronte, 0 = fondo
+    // scatter deterministico per slot, per non far combaciare le figure sul fondo
+    const jitterX = (((slot * 53) % 11) - 5) * 0.9;
+    const jitterY = (((slot * 97) % 7) - 3) * 1.4;
+
+    const left = 50 + 44 * Math.sin(theta) + jitterX;
+    const height = isMobile ? 8 + 10 * depth : 12 + 17 * depth;
+    const bottom = (isMobile ? 32 + 16 * (1 - depth) : 12 + 22 * (1 - depth)) + jitterY;
+    const blur = 2 + 4 * (1 - depth);
+    const opacity = 0.45 + 0.4 * depth;
+
+    return {
+      transform: 'translateX(-50%) scale(1)',
+      filter: `blur(${blur.toFixed(1)}px)`,
+      opacity,
+      zIndex: 1 + Math.round(depth * 20),
+      left: `${left.toFixed(1)}%`,
+      height: `${height.toFixed(1)}%`,
+      bottom: `${bottom.toFixed(1)}%`,
+      pointerEvents: 'none',
+    };
   };
 
   const arrowButtonStyle: React.CSSProperties = {
@@ -393,7 +368,7 @@ export default function IgeaHero({
         {/* Carousel */}
         <div className="absolute inset-0" style={{ zIndex: 3 }}>
           {FIGURES.map((figure, index) => {
-            const style = roleStyle(roleOf(index));
+            const style = slotStyle(index);
             return (
               <div
                 key={figure.src}
@@ -401,7 +376,7 @@ export default function IgeaHero({
                   position: 'absolute',
                   aspectRatio: '0.6 / 1',
                   transformOrigin: 'bottom center',
-                  transition: `transform ${DURATION}ms ${EASE}, filter ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}, left ${DURATION}ms ${EASE}`,
+                  transition: `transform ${DURATION}ms ${EASE}, filter ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}, left ${DURATION}ms ${EASE}, bottom ${DURATION}ms ${EASE}, height ${DURATION}ms ${EASE}`,
                   willChange: 'transform, filter, opacity',
                   ...style,
                 }}
