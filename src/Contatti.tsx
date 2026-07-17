@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { MapPin, Star, Phone, Mail, Clock } from 'lucide-react';
 import { FacebookIcon, InstagramIcon, WhatsAppGlyph } from './Corsi';
 
@@ -58,8 +58,16 @@ export default function Contatti({
   open: boolean;
   onClose: () => void;
 }) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      // il focus non deve restare dentro la pagina resa inert
+      if (rootRef.current?.contains(document.activeElement)) {
+        (document.activeElement as HTMLElement | null)?.blur();
+      }
+      return;
+    }
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -69,6 +77,7 @@ export default function Contatti({
 
   return (
     <div
+      ref={rootRef}
       className="fixed inset-0 overflow-y-auto"
       style={{
         zIndex: 110,
@@ -80,7 +89,7 @@ export default function Contatti({
         transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms',
         pointerEvents: open ? 'auto' : 'none',
       }}
-      aria-hidden={!open}
+      inert={!open}
     >
       {/* Header */}
       <div

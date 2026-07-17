@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { MapPin, Star, Phone, Mail } from 'lucide-react';
 import { FIGURES } from './IgeaHero';
 
@@ -161,8 +161,16 @@ export default function Corsi({
   onClose: () => void;
   onContacts?: () => void;
 }) {
+  const rootRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
-    if (!open) return;
+    if (!open) {
+      // il focus non deve restare dentro la pagina resa inert
+      if (rootRef.current?.contains(document.activeElement)) {
+        (document.activeElement as HTMLElement | null)?.blur();
+      }
+      return;
+    }
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') onClose();
     };
@@ -172,6 +180,7 @@ export default function Corsi({
 
   return (
     <div
+      ref={rootRef}
       className="fixed inset-0 overflow-y-auto"
       style={{
         zIndex: 100,
@@ -183,7 +192,7 @@ export default function Corsi({
         transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1), opacity 500ms',
         pointerEvents: open ? 'auto' : 'none',
       }}
-      aria-hidden={!open}
+      inert={!open}
     >
       {/* Header */}
       <div
