@@ -424,8 +424,14 @@ export default function IgeaHero({
             href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
             target="_blank"
             rel="noreferrer"
-            className="uppercase"
-            style={{ color: 'rgba(255,255,255,0.65)', fontSize: 9.5, letterSpacing: '0.08em', textDecoration: 'underline' }}
+            className="uppercase text-right max-w-[180px] sm:max-w-none"
+            style={{
+              color: 'rgba(255,255,255,0.65)',
+              fontSize: 9.5,
+              letterSpacing: '0.08em',
+              textDecoration: 'underline',
+              lineHeight: 1.7,
+            }}
           >
             Trasparenza · Aiuti di Stato · art. 52 L. 234/2012
           </a>
