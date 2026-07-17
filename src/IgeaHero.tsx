@@ -163,9 +163,11 @@ const GRAIN_URI = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`;
 export default function IgeaHero({
   frozen = false,
   onDiscover,
+  onContacts,
 }: {
   frozen?: boolean;
   onDiscover?: () => void;
+  onContacts?: () => void;
 }) {
   // si parte dal karate
   const [activeIndex, setActiveIndex] = useState(
@@ -368,42 +370,64 @@ export default function IgeaHero({
           style={{ zIndex: 60, filter: 'brightness(0) invert(1)', opacity: 0.95 }}
         />
 
-        {/* Nota trasparenza aiuti di Stato (art. 52 L. 234/2012) */}
+        {/* Contatti in alto a destra — la prima cosa */}
         <div
-          className="absolute top-6 right-4 sm:right-8 text-right"
-          style={{ zIndex: 60, maxWidth: 340 }}
+          className="absolute top-6 right-4 sm:right-8 flex flex-col items-end gap-2.5"
+          style={{ zIndex: 60 }}
         >
-          <p
-            className="uppercase mb-1.5"
-            style={{ color: 'rgba(255,255,255,0.9)', fontSize: 10, letterSpacing: '0.3em', fontWeight: 600 }}
-          >
-            Trasparenza
-          </p>
-          <p
-            className="hidden sm:block uppercase"
-            style={{ color: 'rgba(255,255,255,0.6)', fontSize: 9.5, lineHeight: 1.7, letterSpacing: '0.04em' }}
-          >
-            La società ha ricevuto benefici rientranti nel regime degli aiuti di
-            Stato e nel regime dei minimis per i quali sussiste l&apos;obbligo di
-            pubblicazione nel{' '}
+          <div className="flex items-center gap-2.5">
             <a
-              href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
-              target="_blank"
-              rel="noreferrer"
-              style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'underline' }}
+              href="tel:+390817333174"
+              className="hidden sm:inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold"
+              style={{
+                border: '1px solid rgba(255,255,255,0.45)',
+                color: '#ffffff',
+                textDecoration: 'none',
+                letterSpacing: '0.08em',
+                transition: 'background-color 200ms, color 200ms',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.color = '#1a1a1a';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#ffffff';
+              }}
             >
-              Registro Nazionale degli Aiuti di Stato
-            </a>{' '}
-            di cui all&apos;articolo 52 legge 234/2012.
-          </p>
+              081 733 3174
+            </a>
+            <button
+              type="button"
+              onClick={() => onContacts?.()}
+              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer"
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #ffffff',
+                color: '#1a1a1a',
+                letterSpacing: '0.16em',
+                transition: 'background-color 200ms, color 200ms',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.color = '#1a1a1a';
+              }}
+            >
+              Contatti<span className="hidden sm:inline">&nbsp;&amp; Dove siamo</span>
+            </button>
+          </div>
           <a
             href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
             target="_blank"
             rel="noreferrer"
-            className="sm:hidden uppercase"
+            className="uppercase"
             style={{ color: 'rgba(255,255,255,0.65)', fontSize: 9.5, letterSpacing: '0.08em', textDecoration: 'underline' }}
           >
-            Aiuti di Stato · art. 52 L. 234/2012
+            Trasparenza · Aiuti di Stato · art. 52 L. 234/2012
           </a>
         </div>
 
