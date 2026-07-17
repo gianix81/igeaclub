@@ -365,6 +365,45 @@ export default function IgeaHero({
           style={{ zIndex: 60, filter: 'brightness(0) invert(1)', opacity: 0.95 }}
         />
 
+        {/* Nota trasparenza aiuti di Stato (art. 52 L. 234/2012) */}
+        <div
+          className="absolute top-6 right-4 sm:right-8 text-right"
+          style={{ zIndex: 60, maxWidth: 340 }}
+        >
+          <p
+            className="uppercase mb-1.5"
+            style={{ color: 'rgba(255,255,255,0.9)', fontSize: 10, letterSpacing: '0.3em', fontWeight: 600 }}
+          >
+            Trasparenza
+          </p>
+          <p
+            className="hidden sm:block uppercase"
+            style={{ color: 'rgba(255,255,255,0.6)', fontSize: 9.5, lineHeight: 1.7, letterSpacing: '0.04em' }}
+          >
+            La società ha ricevuto benefici rientranti nel regime degli aiuti di
+            Stato e nel regime dei minimis per i quali sussiste l&apos;obbligo di
+            pubblicazione nel{' '}
+            <a
+              href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: 'rgba(255,255,255,0.9)', textDecoration: 'underline' }}
+            >
+              Registro Nazionale degli Aiuti di Stato
+            </a>{' '}
+            di cui all&apos;articolo 52 legge 234/2012.
+          </p>
+          <a
+            href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
+            target="_blank"
+            rel="noreferrer"
+            className="sm:hidden uppercase"
+            style={{ color: 'rgba(255,255,255,0.65)', fontSize: 9.5, letterSpacing: '0.08em', textDecoration: 'underline' }}
+          >
+            Aiuti di Stato · art. 52 L. 234/2012
+          </a>
+        </div>
+
         {/* Carousel */}
         <div className="absolute inset-0" style={{ zIndex: 3 }}>
           {FIGURES.map((figure, index) => {
