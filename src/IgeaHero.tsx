@@ -167,7 +167,10 @@ export default function IgeaHero({
   frozen?: boolean;
   onDiscover?: () => void;
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  // si parte dal karate
+  const [activeIndex, setActiveIndex] = useState(
+    Math.max(0, FIGURES.findIndex((f) => f.discipline === 'KARATE')),
+  );
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 640 : false,
