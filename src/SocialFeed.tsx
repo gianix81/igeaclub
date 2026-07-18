@@ -18,21 +18,6 @@ const HAIRLINE = '1px solid rgba(255,255,255,0.08)';
 const MUTED = 'rgba(255,255,255,0.62)';
 const FAINT = 'rgba(255,255,255,0.38)';
 
-declare global {
-  interface Window {
-    FB?: { XFBML: { parse: (element?: HTMLElement) => void } };
-  }
-}
-
-function loadScriptOnce(id: string, src: string) {
-  if (document.getElementById(id)) return;
-  const s = document.createElement('script');
-  s.id = id;
-  s.src = src;
-  s.async = true;
-  document.body.appendChild(s);
-}
-
 export default function SocialFeed({
   open,
   onClose,
@@ -57,20 +42,6 @@ export default function SocialFeed({
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [open, onClose]);
 
-  // SDK Facebook: caricato una sola volta, poi si processa il Page Plugin
-  // (Instagram usa iframe diretti /embed/, nessuno script necessario)
-  useEffect(() => {
-    if (!open) return;
-    loadScriptOnce('fb-sdk-js', 'https://connect.facebook.net/it_IT/sdk.js#xfbml=1&version=v21.0');
-    const timer = window.setInterval(() => {
-      if (window.FB) {
-        window.FB.XFBML.parse(rootRef.current ?? undefined);
-        window.clearInterval(timer);
-      }
-    }, 700);
-    return () => window.clearInterval(timer);
-  }, [open]);
-
   return (
     <div
       ref={rootRef}
@@ -87,8 +58,6 @@ export default function SocialFeed({
       }}
       inert={!open}
     >
-      <div id="fb-root" />
-
       {/* Header */}
       <div
         className="sticky top-0 flex items-center justify-between px-5 sm:px-12 py-5"
@@ -221,7 +190,8 @@ export default function SocialFeed({
           </h3>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {/* Fallback grafico sempre visibile (il feed FB spesso non appare ai non loggati) */}
+          {/* Card ufficiale della Pagina (niente SDK Meta: per i non loggati la
+              timeline non si carica e sporca la console di errori) */}
           <div
             className="flex flex-col justify-between p-8"
             style={{ backgroundColor: '#101318', border: HAIRLINE, borderRadius: 14 }}
@@ -252,32 +222,31 @@ export default function SocialFeed({
               </GhostButton>
             </div>
           </div>
-          {/* Page Plugin (visibile quando Meta lo consente) */}
-          <div
-            className="p-4"
-            style={{ backgroundColor: '#101318', border: HAIRLINE, borderRadius: 14, minHeight: 300 }}
+          <a
+            href={FB_PAGE}
+            target="_blank"
+            rel="noreferrer"
+            className="relative block overflow-hidden"
+            style={{ borderRadius: 14, border: HAIRLINE, minHeight: 300 }}
+            aria-label="Apri la Pagina Facebook di Igea Club"
           >
-            <div style={{ width: '100%', maxWidth: 500, margin: '0 auto' }}>
-              <div
-                className="fb-page"
-                style={{ width: '100%', display: 'block' }}
-                data-href={FB_PAGE}
-                data-tabs="timeline"
-                data-width="500"
-                data-height="560"
-                data-small-header="true"
-                data-adapt-container-width="true"
-                data-hide-cover="false"
-                data-show-facepile="false"
-              >
-                <blockquote cite={FB_PAGE} className="fb-xfbml-parse-ignore">
-                  <a href={FB_PAGE} target="_blank" rel="noreferrer" style={{ color: MUTED }}>
-                    Igea Club su Facebook
-                  </a>
-                </blockquote>
-              </div>
-            </div>
-          </div>
+            <img
+              src="/centro/foto-1.jpg"
+              alt="La community di Igea Club in sala cardio"
+              loading="lazy"
+              className="w-full h-full object-cover"
+              style={{ display: 'block', transition: 'transform 400ms' }}
+              onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.03)')}
+              onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+            />
+            <span
+              className="absolute bottom-4 left-4 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase"
+              style={{ backgroundColor: '#0B0D10', color: '#fff', letterSpacing: '0.14em' }}
+            >
+              <FacebookIcon size={14} />
+              @igea.club
+            </span>
+          </a>
         </div>
       </section>
     </div>
