@@ -164,10 +164,12 @@ export default function IgeaHero({
   frozen = false,
   onDiscover,
   onContacts,
+  onSocial,
 }: {
   frozen?: boolean;
   onDiscover?: () => void;
   onContacts?: () => void;
+  onSocial?: () => void;
 }) {
   // si parte dal karate
   const [activeIndex, setActiveIndex] = useState(
@@ -397,6 +399,28 @@ export default function IgeaHero({
             >
               081 733 3174
             </a>
+            <button
+              type="button"
+              onClick={() => onSocial?.()}
+              className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase cursor-pointer"
+              style={{
+                backgroundColor: 'transparent',
+                border: '1px solid rgba(255,255,255,0.45)',
+                color: '#ffffff',
+                letterSpacing: '0.16em',
+                transition: 'background-color 200ms, color 200ms',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#ffffff';
+                e.currentTarget.style.color = '#1a1a1a';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = 'transparent';
+                e.currentTarget.style.color = '#ffffff';
+              }}
+            >
+              Social
+            </button>
             <button
               type="button"
               onClick={() => onContacts?.()}
