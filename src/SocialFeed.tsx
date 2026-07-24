@@ -4,13 +4,15 @@ import { FacebookIcon, InstagramIcon, GhostButton } from './Corsi';
 const IG_PROFILE = 'https://www.instagram.com/igeaclub/';
 const FB_PAGE = 'https://www.facebook.com/igea.club/';
 
+// Anteprime salvate in locale (public/social/): niente script né iframe di Meta,
+// console pulita e nessuna URL firmata che scade. Il click apre il post reale.
 const IG_POSTS = [
-  'https://www.instagram.com/p/Da2WAHriPcn/',
-  'https://www.instagram.com/p/Dae_PexiOdC/',
-  'https://www.instagram.com/p/DZ-KGJJCZq0/',
-  'https://www.instagram.com/p/DYgzPZXCB3b/',
-  'https://www.instagram.com/p/DYOyybFnXjX/',
-  'https://www.instagram.com/p/DXtQ7gqiGvS/',
+  { url: 'https://www.instagram.com/p/Da2WAHriPcn/', img: '/social/post-1.jpg' },
+  { url: 'https://www.instagram.com/p/Dae_PexiOdC/', img: '/social/post-2.jpg' },
+  { url: 'https://www.instagram.com/p/DZ-KGJJCZq0/', img: '/social/post-3.jpg' },
+  { url: 'https://www.instagram.com/p/DYgzPZXCB3b/', img: '/social/post-4.jpg' },
+  { url: 'https://www.instagram.com/p/DYOyybFnXjX/', img: '/social/post-5.jpg' },
+  { url: 'https://www.instagram.com/p/DXtQ7gqiGvS/', img: '/social/post-6.jpg' },
 ];
 
 const ANTON = { fontFamily: "'Anton', sans-serif" } as const;
@@ -139,41 +141,44 @@ export default function SocialFeed({
             Seguici su Instagram
           </GhostButton>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {IG_POSTS.map((url) => (
-            <div
-              key={url}
-              style={{
-                borderRadius: 14,
-                overflow: 'hidden',
-                border: HAIRLINE,
-                backgroundColor: '#101318',
-              }}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
+          {IG_POSTS.map((post) => (
+            <a
+              key={post.url}
+              href={post.url}
+              target="_blank"
+              rel="noreferrer"
+              className="relative block overflow-hidden group"
+              style={{ borderRadius: 14, border: HAIRLINE, aspectRatio: '1 / 1' }}
+              aria-label="Apri il post di @igeaclub su Instagram"
             >
-              <iframe
-                title={`Post Instagram di @igeaclub — ${url}`}
-                src={`${url}embed/`}
+              <img
+                src={post.img}
+                alt="Post Instagram di @igeaclub"
                 loading="lazy"
-                scrolling="no"
-                allowFullScreen
-                style={{
-                  display: 'block',
-                  width: '100%',
-                  height: 460,
-                  border: 0,
-                  background: '#FFFFFF',
-                }}
+                className="w-full h-full object-cover"
+                style={{ display: 'block', transition: 'transform 400ms' }}
+                onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.04)')}
+                onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
               />
-              <a
-                href={url}
-                target="_blank"
-                rel="noreferrer"
-                className="block px-4 py-3 text-xs uppercase text-center"
-                style={{ color: MUTED, textDecoration: 'none', letterSpacing: '0.12em', borderTop: HAIRLINE }}
+              <span
+                className="absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center"
+                style={{ backgroundColor: 'rgba(11,13,16,0.75)', color: '#fff', backdropFilter: 'blur(4px)' }}
               >
-                Apri il post su Instagram
-              </a>
-            </div>
+                <InstagramIcon size={16} />
+              </span>
+              <span
+                className="absolute inset-x-0 bottom-0 px-4 py-3 text-xs uppercase"
+                style={{
+                  color: '#fff',
+                  letterSpacing: '0.12em',
+                  background: 'linear-gradient(transparent, rgba(11,13,16,0.85))',
+                  paddingTop: 28,
+                }}
+              >
+                @igeaclub
+              </span>
+            </a>
           ))}
         </div>
 
