@@ -14,118 +14,118 @@ export type Figure = {
 // Le attività del centro (www.igeaclub.it), una figura ciascuna.
 export const FIGURES: Figure[] = [
   {
-    src: '/figures/01-igea-body-building.png',
+    src: '/figures/01-igea-body-building.webp',
     discipline: 'BODY BUILDING',
     description:
       'Allenamento personalizzato con sovraccarichi per aumentare massa e tono muscolare e modellare il corpo secondo le tue esigenze.',
     bg: '#64809C',
   },
   {
-    src: '/figures/02-igea-total-body.png',
+    src: '/figures/02-igea-total-body.webp',
     discipline: 'TOTAL BODY',
     description:
       'Allenamento completo mirato al dimagrimento e alla tonificazione: mix di esercizi a corpo libero, con piccoli pesi e attrezzi.',
     bg: '#CF9146',
   },
   {
-    src: '/figures/03-igea-hiit.png',
+    src: '/figures/03-igea-hiit.webp',
     discipline: 'HIT',
     description:
       'Cardio fitness che alterna esercizi ad alta e bassa intensità, con un consumo calorico maggiore rispetto ad altri allenamenti.',
     bg: '#F4845F',
   },
   {
-    src: '/figures/04-igea-pilates.png',
+    src: '/figures/04-igea-pilates.webp',
     discipline: 'PILATES',
     description:
       'Allenamento a scarico delle articolazioni con piccoli attrezzi: fluidità dei movimenti e forza in tutto il corpo, senza eccesso di massa muscolare.',
     bg: '#6FA895',
   },
   {
-    src: '/figures/05-igea-aerobica.png',
+    src: '/figures/05-igea-aerobica.webp',
     discipline: 'AEROBICA',
     description:
       'Attività musicale e coreografica che combina cardio e tonificazione. Migliora resistenza e coordinazione, tonifica soprattutto gambe e glutei.',
     bg: '#9C82C9',
   },
   {
-    src: '/figures/06-igea-circuit-training.png',
+    src: '/figures/06-igea-circuit-training.webp',
     discipline: 'CIRCUIT TRAINING',
     description:
       'Circuiti ad alta intensità mirati al rafforzamento fisico: allenamento di forza, mobilità e lavoro articolare.',
     bg: '#BF6A54',
   },
   {
-    src: '/figures/07-igea-fit-boxe.png',
+    src: '/figures/07-igea-fit-boxe.webp',
     discipline: 'FIT BOXE',
     description:
       'Calci, ganci, parate, gomitate e pugni al sacco tipico della boxe, ma a ritmo di musica e coinvolgendo tutte le fasce muscolari.',
     bg: '#C4637E',
   },
   {
-    src: '/figures/08-igea-difesa-personale.png',
+    src: '/figures/08-igea-difesa-personale.webp',
     discipline: 'DIFESA PERSONALE',
     description: "Mix di tecniche di arti marziali volte all'autodifesa.",
     bg: '#829B6A',
   },
   {
-    src: '/figures/09-igea-personal-trainer.png',
+    src: '/figures/09-igea-personal-trainer.webp',
     discipline: 'PERSONAL TRAINER',
     description:
       'La figura professionale che si occupa del tuo allenamento personalizzato, per supportarti nel raggiungimento degli obiettivi prefissati.',
     bg: '#5C8FBF',
   },
   {
-    src: '/figures/10-igea-kick-boxing.png',
+    src: '/figures/10-igea-kick-boxing.webp',
     discipline: 'KICK BOXING',
     description:
       'Sport da combattimento che combina i calci delle arti marziali orientali ai colpi di pugno propri del pugilato.',
     bg: '#B5524E',
   },
   {
-    src: '/figures/11-igea-indoor-cycling.png',
+    src: '/figures/11-igea-indoor-cycling.webp',
     discipline: 'INDOOR CYCLING',
     description:
       'Allenamento su bicicletta stazionaria ad alta intensità e consumo calorico, per migliorare lo sviluppo di forza e resistenza.',
     bg: '#4FA3A8',
   },
   {
-    src: '/figures/12-igea-ginnastica-artistica.png',
+    src: '/figures/12-igea-ginnastica-artistica.webp',
     discipline: 'GINNASTICA ARTISTICA',
     description:
       'Elasticità, forza muscolare e coordinazione: esercizi a corpo libero e con attrezzi come trave e parallele.',
     bg: '#D98BB4',
   },
   {
-    src: '/figures/13-igea-calcio.png',
+    src: '/figures/13-igea-calcio.webp',
     discipline: 'CALCIO',
     description:
       'Gioco di squadra per sviluppare e perfezionare gli schemi motori di base e posturali e la coordinazione.',
     bg: '#67A867',
   },
   {
-    src: '/figures/14-igea-karate.png',
+    src: '/figures/14-igea-karate.webp',
     discipline: 'KARATE',
     description:
       'Tecniche di pugno e di calcio in successioni di movimenti (kumite) ed esercizi prestabiliti (kata). Minimo contatto con l’avversario.',
     bg: '#7D8A99',
   },
   {
-    src: '/figures/15-igea-judo.png',
+    src: '/figures/15-igea-judo.webp',
     discipline: 'JUDO',
     description:
       'Si studiano i punti di squilibrio dell’avversario per farlo cadere al suolo: prese, lanci, ribaltamenti e immobilizzazioni.',
     bg: '#6D7BC4',
   },
   {
-    src: '/figures/16-igea-psicomotricita.png',
+    src: '/figures/16-igea-psicomotricita.webp',
     discipline: 'PSICOMOTRICITÀ',
     description:
       'Disciplina che mira all’armonia tra la componente psicologica e motoria.',
     bg: '#E0937C',
   },
   {
-    src: '/figures/17-igea-padel.png',
+    src: '/figures/17-igea-padel.webp',
     discipline: 'PADEL',
     description:
       'Campo da padel prenotabile per partite in coppia o in quattro, a tutti i livelli.',
@@ -134,7 +134,7 @@ export const FIGURES: Figure[] = [
     prenotaLabel: 'il campo da padel',
   },
   {
-    src: '/figures/18-igea-piscina-nuoto.png',
+    src: '/figures/18-igea-piscina-nuoto.webp',
     discipline: 'PISCINA & NUOTO',
     description:
       'Ampia piscina con giardino, aperta a utenti e famiglie: nuoto libero, relax e divertimento per tutte le età.',
@@ -143,7 +143,7 @@ export const FIGURES: Figure[] = [
     prenotaLabel: 'la piscina',
   },
   {
-    src: '/figures/19-igea-calcetto.png',
+    src: '/figures/19-igea-calcetto.webp',
     discipline: 'CALCETTO',
     description:
       'Campi all’aperto per partite tra amici e tornei: prenota il tuo campo e scendi in campo con la tua squadra.',
