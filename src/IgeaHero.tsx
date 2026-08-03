@@ -14,118 +14,118 @@ export type Figure = {
 // Le attività del centro (www.igeaclub.it), una figura ciascuna.
 export const FIGURES: Figure[] = [
   {
-    src: '/figures/01-igea-body-building.png',
+    src: '/figures/01-igea-body-building.webp',
     discipline: 'BODY BUILDING',
     description:
       'Allenamento personalizzato con sovraccarichi per aumentare massa e tono muscolare e modellare il corpo secondo le tue esigenze.',
     bg: '#64809C',
   },
   {
-    src: '/figures/02-igea-total-body.png',
+    src: '/figures/02-igea-total-body.webp',
     discipline: 'TOTAL BODY',
     description:
       'Allenamento completo mirato al dimagrimento e alla tonificazione: mix di esercizi a corpo libero, con piccoli pesi e attrezzi.',
     bg: '#CF9146',
   },
   {
-    src: '/figures/03-igea-hiit.png',
+    src: '/figures/03-igea-hiit.webp',
     discipline: 'HIT',
     description:
       'Cardio fitness che alterna esercizi ad alta e bassa intensità, con un consumo calorico maggiore rispetto ad altri allenamenti.',
     bg: '#F4845F',
   },
   {
-    src: '/figures/04-igea-pilates.png',
+    src: '/figures/04-igea-pilates.webp',
     discipline: 'PILATES',
     description:
       'Allenamento a scarico delle articolazioni con piccoli attrezzi: fluidità dei movimenti e forza in tutto il corpo, senza eccesso di massa muscolare.',
     bg: '#6FA895',
   },
   {
-    src: '/figures/05-igea-aerobica.png',
+    src: '/figures/05-igea-aerobica.webp',
     discipline: 'AEROBICA',
     description:
       'Attività musicale e coreografica che combina cardio e tonificazione. Migliora resistenza e coordinazione, tonifica soprattutto gambe e glutei.',
     bg: '#9C82C9',
   },
   {
-    src: '/figures/06-igea-circuit-training.png',
+    src: '/figures/06-igea-circuit-training.webp',
     discipline: 'CIRCUIT TRAINING',
     description:
       'Circuiti ad alta intensità mirati al rafforzamento fisico: allenamento di forza, mobilità e lavoro articolare.',
     bg: '#BF6A54',
   },
   {
-    src: '/figures/07-igea-fit-boxe.png',
+    src: '/figures/07-igea-fit-boxe.webp',
     discipline: 'FIT BOXE',
     description:
       'Calci, ganci, parate, gomitate e pugni al sacco tipico della boxe, ma a ritmo di musica e coinvolgendo tutte le fasce muscolari.',
     bg: '#C4637E',
   },
   {
-    src: '/figures/08-igea-difesa-personale.png',
+    src: '/figures/08-igea-difesa-personale.webp',
     discipline: 'DIFESA PERSONALE',
     description: "Mix di tecniche di arti marziali volte all'autodifesa.",
     bg: '#829B6A',
   },
   {
-    src: '/figures/09-igea-personal-trainer.png',
+    src: '/figures/09-igea-personal-trainer.webp',
     discipline: 'PERSONAL TRAINER',
     description:
       'La figura professionale che si occupa del tuo allenamento personalizzato, per supportarti nel raggiungimento degli obiettivi prefissati.',
     bg: '#5C8FBF',
   },
   {
-    src: '/figures/10-igea-kick-boxing.png',
+    src: '/figures/10-igea-kick-boxing.webp',
     discipline: 'KICK BOXING',
     description:
       'Sport da combattimento che combina i calci delle arti marziali orientali ai colpi di pugno propri del pugilato.',
     bg: '#B5524E',
   },
   {
-    src: '/figures/11-igea-indoor-cycling.png',
+    src: '/figures/11-igea-indoor-cycling.webp',
     discipline: 'INDOOR CYCLING',
     description:
       'Allenamento su bicicletta stazionaria ad alta intensità e consumo calorico, per migliorare lo sviluppo di forza e resistenza.',
     bg: '#4FA3A8',
   },
   {
-    src: '/figures/12-igea-ginnastica-artistica.png',
+    src: '/figures/12-igea-ginnastica-artistica.webp',
     discipline: 'GINNASTICA ARTISTICA',
     description:
       'Elasticità, forza muscolare e coordinazione: esercizi a corpo libero e con attrezzi come trave e parallele.',
     bg: '#D98BB4',
   },
   {
-    src: '/figures/13-igea-calcio.png',
+    src: '/figures/13-igea-calcio.webp',
     discipline: 'CALCIO',
     description:
       'Gioco di squadra per sviluppare e perfezionare gli schemi motori di base e posturali e la coordinazione.',
     bg: '#67A867',
   },
   {
-    src: '/figures/14-igea-karate.png',
+    src: '/figures/14-igea-karate.webp',
     discipline: 'KARATE',
     description:
       'Tecniche di pugno e di calcio in successioni di movimenti (kumite) ed esercizi prestabiliti (kata). Minimo contatto con l’avversario.',
     bg: '#7D8A99',
   },
   {
-    src: '/figures/15-igea-judo.png',
+    src: '/figures/15-igea-judo.webp',
     discipline: 'JUDO',
     description:
       'Si studiano i punti di squilibrio dell’avversario per farlo cadere al suolo: prese, lanci, ribaltamenti e immobilizzazioni.',
     bg: '#6D7BC4',
   },
   {
-    src: '/figures/16-igea-psicomotricita.png',
+    src: '/figures/16-igea-psicomotricita.webp',
     discipline: 'PSICOMOTRICITÀ',
     description:
       'Disciplina che mira all’armonia tra la componente psicologica e motoria.',
     bg: '#E0937C',
   },
   {
-    src: '/figures/17-igea-padel.png',
+    src: '/figures/17-igea-padel.webp',
     discipline: 'PADEL',
     description:
       'Campo da padel prenotabile per partite in coppia o in quattro, a tutti i livelli.',
@@ -134,7 +134,7 @@ export const FIGURES: Figure[] = [
     prenotaLabel: 'il campo da padel',
   },
   {
-    src: '/figures/18-igea-piscina-nuoto.png',
+    src: '/figures/18-igea-piscina-nuoto.webp',
     discipline: 'PISCINA & NUOTO',
     description:
       'Ampia piscina con giardino, aperta a utenti e famiglie: nuoto libero, relax e divertimento per tutte le età.',
@@ -143,7 +143,7 @@ export const FIGURES: Figure[] = [
     prenotaLabel: 'la piscina',
   },
   {
-    src: '/figures/19-igea-calcetto.png',
+    src: '/figures/19-igea-calcetto.webp',
     discipline: 'CALCETTO',
     description:
       'Campi all’aperto per partite tra amici e tornei: prenota il tuo campo e scendi in campo con la tua squadra.',
@@ -174,6 +174,7 @@ export default function IgeaHero({
     Math.max(0, FIGURES.findIndex((f) => f.discipline === 'KARATE')),
   );
   const [isAnimating, setIsAnimating] = useState(false);
+  const [paused, setPaused] = useState(false);
   const [isMobile, setIsMobile] = useState(
     typeof window !== 'undefined' ? window.innerWidth < 640 : false,
   );
@@ -203,6 +204,14 @@ export default function IgeaHero({
     },
     [isAnimating],
   );
+
+  // Autoplay: avanza da solo ogni 3 secondi. In pausa quando una pagina interna
+  // è aperta (frozen) o mentre l'utente interagisce con lo slider (paused).
+  useEffect(() => {
+    if (frozen || paused) return;
+    const id = window.setInterval(() => navigate('next'), 3000);
+    return () => window.clearInterval(id);
+  }, [frozen, paused, navigate]);
 
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
@@ -316,10 +325,35 @@ export default function IgeaHero({
         touchAction: 'none',
       }}
       onWheel={handleWheel}
-      onPointerDown={handlePointerDown}
-      onPointerUp={handlePointerUp}
+      onPointerDown={(e) => {
+        setPaused(true);
+        handlePointerDown(e);
+      }}
+      onPointerUp={(e) => {
+        handlePointerUp(e);
+        if (e.pointerType === 'touch') setPaused(false);
+      }}
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
     >
       <div className="relative w-full hero-viewport" style={{ overflow: 'hidden' }}>
+        {/* Titolo SEO, nascosto visivamente ma letto da motori di ricerca e screen reader */}
+        <h1
+          style={{
+            position: 'absolute',
+            width: 1,
+            height: 1,
+            padding: 0,
+            margin: -1,
+            overflow: 'hidden',
+            clip: 'rect(0,0,0,0)',
+            whiteSpace: 'nowrap',
+            border: 0,
+          }}
+        >
+          Igea Club — palestra, piscina e centro sportivo a Cercola (Napoli) dal 1978
+        </h1>
+
         {/* Grain overlay */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -420,21 +454,6 @@ export default function IgeaHero({
               Contatti<span className="hidden sm:inline">&nbsp;&amp; Dove siamo</span>
             </button>
           </div>
-          <a
-            href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
-            target="_blank"
-            rel="noreferrer"
-            className="uppercase text-right max-w-[180px] sm:max-w-none"
-            style={{
-              color: 'rgba(255,255,255,0.65)',
-              fontSize: 9.5,
-              letterSpacing: '0.08em',
-              textDecoration: 'underline',
-              lineHeight: 1.7,
-            }}
-          >
-            Trasparenza · Aiuti di Stato · art. 52 L. 234/2012
-          </a>
         </div>
 
         {/* Carousel */}

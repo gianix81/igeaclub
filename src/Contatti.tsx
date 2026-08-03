@@ -219,7 +219,7 @@ export default function Contatti({
               aria-label="Apri la mappa di Igea Club su Google Maps"
             >
               <img
-                src="/mappa-igea.jpg"
+                src="/mappa-igea.webp"
                 alt="Mappa — Igea Club, Viale delle Rose 3, Cercola (NA)"
                 loading="lazy"
                 className="w-full object-cover"
@@ -333,22 +333,6 @@ export default function Contatti({
             ))}
           </div>
         </div>
-
-        {/* Trasparenza aiuti di Stato (art. 52 L. 234/2012) */}
-        <p className="mt-12 text-xs" style={{ color: 'rgba(255,255,255,0.3)', lineHeight: 1.7 }}>
-          LA SOCIETA&apos; HA RICEVUTO BENEFICI RIENTRANTI NEL REGIME DEGLI AIUTI DI
-          STATO E NEL REGIME DEI MINIMIS PER I QUALI SUSSISTE L&apos;OBBLIGO DI
-          PUBBLICAZIONE NEL{' '}
-          <a
-            href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'underline' }}
-          >
-            REGISTRO NAZIONALE DEGLI AIUTI DI STATO
-          </a>{' '}
-          DI CUI ALL&apos;ARTICOLO 52 LEGGE 234/2012.
-        </p>
       </div>
     </div>
   );

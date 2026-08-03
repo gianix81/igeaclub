@@ -7,10 +7,10 @@ const MAPS_URL =
   'https://www.google.com/maps/place/Igea+Club/@40.8527988,14.3508411,19z/data=!4m14!1m7!3m6!1s0x133ba622ea0f5471:0xde95141c824f7bb!2sIgea+Club!8m2!3d40.8501835!4d14.3534236!16s%2Fg%2F1hc77cq2t!3m5!1s0x133ba622ea0f5471:0xde95141c824f7bb!8m2!3d40.8501835!4d14.3534236!16s%2Fg%2F1hc77cq2t?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D';
 
 const CENTRO_PHOTOS = [
-  { src: '/centro/foto-1.jpg', alt: 'Sala cardio Igea Club' },
-  { src: '/centro/foto-3.jpg', alt: 'Sala attrezzi Igea Club' },
-  { src: '/centro/foto-2.jpg', alt: 'Piscina all’aperto Igea Club' },
-  { src: '/centro/foto-5.jpg', alt: 'Palazzetto Igea Club' },
+  { src: '/centro/foto-1.webp', alt: 'Sala cardio Igea Club' },
+  { src: '/centro/foto-3.webp', alt: 'Sala attrezzi Igea Club' },
+  { src: '/centro/foto-2.webp', alt: 'Piscina all’aperto Igea Club' },
+  { src: '/centro/foto-5.webp', alt: 'Palazzetto Igea Club' },
 ];
 
 const ANTON = { fontFamily: "'Anton', sans-serif" } as const;
@@ -411,22 +411,6 @@ export default function Corsi({
 
         <p className="mt-12 text-xs uppercase" style={{ color: FAINT, letterSpacing: '0.28em' }}>
           Igea Club · Enjoy your wellness · Napoli, dal 1978
-        </p>
-
-        {/* Trasparenza aiuti di Stato (art. 52 L. 234/2012) */}
-        <p className="mt-5 text-xs" style={{ color: 'rgba(255,255,255,0.3)', lineHeight: 1.7 }}>
-          LA SOCIETA&apos; HA RICEVUTO BENEFICI RIENTRANTI NEL REGIME DEGLI AIUTI DI
-          STATO E NEL REGIME DEI MINIMIS PER I QUALI SUSSISTE L&apos;OBBLIGO DI
-          PUBBLICAZIONE NEL{' '}
-          <a
-            href="https://www.rna.gov.it/RegistroNazionaleTrasparenza/faces/pages/TrasparenzaAiuto.jspx"
-            target="_blank"
-            rel="noreferrer"
-            style={{ color: 'rgba(255,255,255,0.55)', textDecoration: 'underline' }}
-          >
-            REGISTRO NAZIONALE DEGLI AIUTI DI STATO
-          </a>{' '}
-          DI CUI ALL&apos;ARTICOLO 52 LEGGE 234/2012.
         </p>
       </div>
     </div>
