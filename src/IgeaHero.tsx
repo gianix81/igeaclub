@@ -125,6 +125,34 @@ export const FIGURES: Figure[] = [
     bg: '#E0937C',
   },
   {
+    src: '/figures/20-igea-kung-fu.webp',
+    discipline: 'KUNG FU',
+    description:
+      'Arte marziale cinese che unisce tecniche di mano e di calcio, posizioni stabili e movimenti fluidi: forza, agilità e concentrazione.',
+    bg: '#D1B647',
+  },
+  {
+    src: '/figures/21-igea-aikido.webp',
+    discipline: 'AIKIDO',
+    description:
+      'Arte marziale giapponese basata sul controllo e sulla deviazione della forza dell’avversario: proiezioni, leve e cadute, senza competizione.',
+    bg: '#A46EB9',
+  },
+  {
+    src: '/figures/22-igea-posturale-pilates.webp',
+    discipline: 'PILATES POSTURALE',
+    description:
+      'Pilates mirato al riequilibrio della postura: allungamento della colonna, rinforzo del core e respirazione per un corpo allineato e senza tensioni.',
+    bg: '#C072B5',
+  },
+  {
+    src: '/figures/23-igea-tonificazione.webp',
+    discipline: 'TONIFICAZIONE',
+    description:
+      'Esercizi con piccoli pesi e a corpo libero per rassodare e definire i muscoli, in particolare braccia, gambe, glutei e addome.',
+    bg: '#ADB946',
+  },
+  {
     src: '/figures/17-igea-padel.webp',
     discipline: 'PADEL',
     description:
