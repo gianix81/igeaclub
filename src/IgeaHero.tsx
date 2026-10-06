@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import NavMenu, { type NavKey } from './NavMenu';
 
 export type Figure = {
   src: string;
@@ -28,13 +29,6 @@ export const FIGURES: Figure[] = [
     bg: '#CF9146',
   },
   {
-    src: '/figures/03-igea-hiit.webp',
-    discipline: 'HIT',
-    description:
-      'Cardio fitness che alterna esercizi ad alta e bassa intensità, con un consumo calorico maggiore rispetto ad altri allenamenti.',
-    bg: '#F4845F',
-  },
-  {
     src: '/figures/04-igea-pilates.webp',
     discipline: 'PILATES',
     description:
@@ -42,11 +36,18 @@ export const FIGURES: Figure[] = [
     bg: '#6FA895',
   },
   {
-    src: '/figures/05-igea-aerobica.webp',
-    discipline: 'AEROBICA',
+    src: '/figures/22-igea-posturale-pilates.webp',
+    discipline: 'POSTURALE PILATES',
     description:
-      'Attività musicale e coreografica che combina cardio e tonificazione. Migliora resistenza e coordinazione, tonifica soprattutto gambe e glutei.',
-    bg: '#9C82C9',
+      'Ginnastica dolce per riequilibrare la postura: esercizi mirati a sciogliere le tensioni, rinforzare il core e migliorare la mobilità della colonna.',
+    bg: '#7FA38C',
+  },
+  {
+    src: '/figures/23-igea-tonificazione.webp',
+    discipline: 'TONIFICAZIONE',
+    description:
+      'Allenamento mirato a rassodare e definire la muscolatura di tutto il corpo, con piccoli attrezzi ed esercizi a corpo libero.',
+    bg: '#B07FB8',
   },
   {
     src: '/figures/06-igea-circuit-training.webp',
@@ -83,13 +84,6 @@ export const FIGURES: Figure[] = [
     bg: '#B5524E',
   },
   {
-    src: '/figures/11-igea-indoor-cycling.webp',
-    discipline: 'INDOOR CYCLING',
-    description:
-      'Allenamento su bicicletta stazionaria ad alta intensità e consumo calorico, per migliorare lo sviluppo di forza e resistenza.',
-    bg: '#4FA3A8',
-  },
-  {
     src: '/figures/12-igea-ginnastica-artistica.webp',
     discipline: 'GINNASTICA ARTISTICA',
     description:
@@ -118,6 +112,20 @@ export const FIGURES: Figure[] = [
     bg: '#6D7BC4',
   },
   {
+    src: '/figures/20-igea-kung-fu.webp',
+    discipline: 'KUNG FU',
+    description:
+      'Arte marziale cinese che unisce tecniche di difesa e attacco a movimenti fluidi e coordinati: forza, equilibrio, agilità e concentrazione.',
+    bg: '#C0564B',
+  },
+  {
+    src: '/figures/21-igea-aikido.webp',
+    discipline: 'AIKIDO',
+    description:
+      'Arte marziale giapponese basata sull’armonia: si neutralizza l’avversario sfruttandone la forza, con proiezioni, leve e movimenti circolari.',
+    bg: '#5E7BA6',
+  },
+  {
     src: '/figures/16-igea-psicomotricita.webp',
     discipline: 'PSICOMOTRICITÀ',
     description:
@@ -135,7 +143,7 @@ export const FIGURES: Figure[] = [
   },
   {
     src: '/figures/18-igea-piscina-nuoto.webp',
-    discipline: 'PISCINA & NUOTO',
+    discipline: 'PISCINA',
     description:
       'Ampia piscina con giardino, aperta a utenti e famiglie: nuoto libero, relax e divertimento per tutte le età.',
     bg: '#56A4D9',
@@ -163,13 +171,11 @@ const GRAIN_URI = `url("data:image/svg+xml,${encodeURIComponent(GRAIN_SVG)}")`;
 export default function IgeaHero({
   frozen = false,
   onDiscover,
-  onContacts,
-  onSocial,
+  onNavigate,
 }: {
   frozen?: boolean;
   onDiscover?: () => void;
-  onContacts?: () => void;
-  onSocial?: () => void;
+  onNavigate?: (key: NavKey) => void;
 }) {
   // si parte dal karate
   const [activeIndex, setActiveIndex] = useState(
@@ -433,50 +439,7 @@ export default function IgeaHero({
             >
               081 733 3174
             </a>
-            <button
-              type="button"
-              onClick={() => onSocial?.()}
-              className="inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-xs font-semibold uppercase cursor-pointer"
-              style={{
-                backgroundColor: 'transparent',
-                border: '1px solid rgba(255,255,255,0.45)',
-                color: '#ffffff',
-                letterSpacing: '0.16em',
-                transition: 'background-color 200ms, color 200ms',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.color = '#1a1a1a';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#ffffff';
-              }}
-            >
-              Social
-            </button>
-            <button
-              type="button"
-              onClick={() => onContacts?.()}
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-xs font-bold uppercase cursor-pointer"
-              style={{
-                backgroundColor: '#ffffff',
-                border: '1px solid #ffffff',
-                color: '#1a1a1a',
-                letterSpacing: '0.16em',
-                transition: 'background-color 200ms, color 200ms',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.backgroundColor = 'transparent';
-                e.currentTarget.style.color = '#ffffff';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.backgroundColor = '#ffffff';
-                e.currentTarget.style.color = '#1a1a1a';
-              }}
-            >
-              Contatti<span className="hidden sm:inline">&nbsp;&amp; Dove siamo</span>
-            </button>
+            {onNavigate && <NavMenu onNavigate={onNavigate} />}
           </div>
         </div>
 

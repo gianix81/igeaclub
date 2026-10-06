@@ -1,46 +1,45 @@
 import { useEffect, useRef, useState } from 'react';
 import IgeaHero from './IgeaHero';
 import Corsi from './Corsi';
-import Contatti from './Contatti';
-import SocialFeed from './SocialFeed';
+import type { NavKey } from './NavMenu';
+
+export type PageTarget = {
+  sec: 'corsi' | 'spazi' | 'centro' | 'dove' | 'social' | 'contatti';
+  n: number;
+};
 
 export default function App() {
-  const [showCorsi, setShowCorsi] = useState(false);
-  const [showContatti, setShowContatti] = useState(false);
-  const [showSocial, setShowSocial] = useState(false);
+  // Un'unica pagina interna scrollabile (hero a parte): tutte le sezioni sono lì
+  // e l'hamburger menu serve solo come anchor rapido.
+  const [showPage, setShowPage] = useState(false);
+  const [target, setTarget] = useState<PageTarget | null>(null);
 
-  // Riferimenti sempre aggiornati per leggere lo stato dentro il listener popstate
-  const corsiRef = useRef(showCorsi);
-  const contattiRef = useRef(showContatti);
-  const socialRef = useRef(showSocial);
-  corsiRef.current = showCorsi;
-  contattiRef.current = showContatti;
-  socialRef.current = showSocial;
+  const pageRef = useRef(showPage);
+  pageRef.current = showPage;
 
   // Ogni apertura aggiunge una voce nella cronologia, così il tasto "indietro"
-  // del browser (soprattutto su mobile) chiude la pagina interna e torna alla
-  // home invece di uscire dal sito.
-  const openCorsi = () => {
-    window.history.pushState({ igea: 'corsi' }, '');
-    setShowCorsi(true);
+  // del browser chiude la pagina interna e torna alla home invece di uscire dal sito.
+  const openPage = () => {
+    window.history.pushState({ igea: 'page' }, '');
+    setShowPage(true);
   };
-  const openContatti = () => {
-    window.history.pushState({ igea: 'contatti' }, '');
-    setShowContatti(true);
-  };
-  const openSocial = () => {
-    window.history.pushState({ igea: 'social' }, '');
-    setShowSocial(true);
-  };
-  // La X e la pressione di "indietro" seguono lo stesso percorso: torniamo
-  // indietro nella cronologia e il listener qui sotto chiude l'overlay in cima.
   const goBack = () => window.history.back();
+
+  // Navigazione dall'hamburger menu: apre la pagina (se chiusa) e scrolla alla sezione.
+  const navigate = (key: NavKey) => {
+    if (key === 'home') {
+      setShowPage(false);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
+    const sec: PageTarget['sec'] = key === 'contattaci' ? 'contatti' : key;
+    setTarget((prev) => ({ sec, n: (prev?.n ?? 0) + 1 }));
+    if (!pageRef.current) openPage();
+  };
 
   useEffect(() => {
     const onPop = () => {
-      if (contattiRef.current) setShowContatti(false);
-      else if (socialRef.current) setShowSocial(false);
-      else if (corsiRef.current) setShowCorsi(false);
+      if (pageRef.current) setShowPage(false);
     };
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
@@ -48,15 +47,8 @@ export default function App() {
 
   return (
     <>
-      <IgeaHero
-        frozen={showCorsi || showContatti || showSocial}
-        onDiscover={openCorsi}
-        onContacts={openContatti}
-        onSocial={openSocial}
-      />
-      <Corsi open={showCorsi} onClose={goBack} onContacts={openContatti} />
-      <Contatti open={showContatti} onClose={goBack} />
-      <SocialFeed open={showSocial} onClose={goBack} />
+      <IgeaHero frozen={showPage} onDiscover={() => navigate('corsi')} onNavigate={navigate} />
+      <Corsi open={showPage} onClose={goBack} onNavigate={navigate} scrollTarget={target} />
     </>
   );
 }
