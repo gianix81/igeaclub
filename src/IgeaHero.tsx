@@ -37,7 +37,7 @@ export const FIGURES: Figure[] = [
   },
   {
     src: '/figures/22-igea-posturale-pilates.webp',
-    discipline: 'POSTURALE PILATES',
+    discipline: 'POSTURAL PILATES',
     description:
       'Ginnastica dolce per riequilibrare la postura: esercizi mirati a sciogliere le tensioni, rinforzare il core e migliorare la mobilità della colonna.',
     bg: '#7FA38C',
