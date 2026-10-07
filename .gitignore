@@ -2,3 +2,6 @@ node_modules
 dist
 *.local
 .env
+
+# Materiale sorgente (immagini/video originali, non serve nel sito)
+Immagini/
